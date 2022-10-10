@@ -1,5 +1,6 @@
-package com.rootlab.jpashop;
+package com.rootlab.jpashop.repository;
 
+import com.rootlab.jpashop.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

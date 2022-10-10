@@ -1,6 +1,7 @@
 package com.rootlab.jpashop;
 
-import org.assertj.core.api.Assertions;
+import com.rootlab.jpashop.domain.Member;
+import com.rootlab.jpashop.repository.MemberRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,18 @@ public class MemberRepositoryTest {
 
 	@Test
 	@Transactional
-	@Rollback(false)
+//	@Rollback(false)
 	public void testMember() {
 		Member member = new Member();
-		member.setUsername("memberA");
+		member.setName("memberA");
 		Long saveId = memberRepository.save(member);
 		Member findMember = memberRepository.find(saveId);
 		assertThat(findMember.getId()).isEqualTo(member.getId());
-		assertThat(findMember.getUsername()).isEqualTo(member.getUsername());
+		assertThat(findMember.getName()).isEqualTo(member.getName());
 		//JPA 엔티티 동일성 보장: findMember와 member는 같은 객체
+		// 같은 영속성 컨텍스트 안에서는 id값이 같으면 같은 엔티티로 취급
+		System.out.println("member = " + member);
+		System.out.println("findMember = " + findMember);
 		assertThat(findMember).isEqualTo(member);
 	}
 
