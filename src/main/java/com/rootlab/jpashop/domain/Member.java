@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
+@Getter
+@Setter
 public class Member {
-	@Id @GeneratedValue
-	@Column(name = "member_id")
-	private Long id;
-	private String name;
+    @Id
+    @GeneratedValue
+    @Column(name = "member_id")
+    private Long id;
 
-	@Embedded
-	private Address address;
+    private String name;
 
-	@OneToMany(mappedBy = "member")
-	private List<Order> orders = new ArrayList<>();
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 }
