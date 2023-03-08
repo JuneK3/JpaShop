@@ -1,9 +1,6 @@
 package com.rootlab.jpashop.service;
 
-import com.rootlab.jpashop.domain.Delivery;
-import com.rootlab.jpashop.domain.Member;
-import com.rootlab.jpashop.domain.Order;
-import com.rootlab.jpashop.domain.OrderItem;
+import com.rootlab.jpashop.domain.*;
 import com.rootlab.jpashop.domain.item.Item;
 import com.rootlab.jpashop.domain.status.DeliveryStatus;
 import com.rootlab.jpashop.repository.ItemRepository;
@@ -12,6 +9,8 @@ import com.rootlab.jpashop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +40,9 @@ public class OrderService {
     public void cancelOrder(Long orderId) {
         Order order = orderRepository.findOne(orderId);
         order.cancel();
+    }
+
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
     }
 }
