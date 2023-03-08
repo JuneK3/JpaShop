@@ -1,4 +1,4 @@
-package com.rootlab.jpashop.controller;
+package com.rootlab.jpashop.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
